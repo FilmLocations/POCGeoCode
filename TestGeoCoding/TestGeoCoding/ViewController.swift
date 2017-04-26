@@ -36,20 +36,6 @@ class SFMovie {
     }
     
     var toJSON: [String: Any] {
-        var lat: Double?
-        var long: Double?
-        
-//        if self.lat == nil {
-//            lat = nilConstant
-//        } else {
-//            lat = "\(self.lat!)"
-//        }
-//        
-//        if self.long == nil {
-//            long = nilConstant
-//        } else {
-//            long = "\(self.long!)"
-//        }
         
         return ["locations": self.locations ?? nilConstant ,
                 "tilte": self.title ?? nilConstant,
@@ -57,13 +43,7 @@ class SFMovie {
                 "long": self.long ?? 0,
                 "distributor": self.distributor ?? nilConstant]
         
-        //return "{\"locations\":\"\(self.locations ?? nilConstant)\",\"tilte\":\"\(self.title ?? nilConstant)\", \"lat\":\"\(lat)\", \"long\":\"\(long)\",  \"distributor\":\"\(self.distributor ?? nilConstant)\"}"
     }
-    
-//    static func jsonArray(array : [SFMovie]) -> String
-//    {
-//        return "[" + array.map {$0.toJSON}.joined(separator: ",") + "]"
-//    }
     
     func fetchCordinatesFromLocation(location: String, callback:  @escaping (_ lat: Double?, _ long: Double?)->()) {
         let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(location)&key=AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI"
@@ -104,10 +84,7 @@ class SFMovie {
             }
         }
         task.resume()
-        
-        
     }
-    
 }
 
 class ViewController: UIViewController {
@@ -124,7 +101,6 @@ class ViewController: UIViewController {
                 
                 print("Fetch GeoLocation for location \(location)")
                 
-                //DispatchQueue.global(qos: .userInitiated).sync(execute: {
                 movie.fetchCordinatesFromLocation(location: location, callback: { (lat: Double?, long:Double?) in
                     
                     movie.lat = lat
@@ -155,8 +131,6 @@ class ViewController: UIViewController {
         print("geoCodingCompleted")
         
         let movieJSONArray = self.movies.map {$0.toJSON}
-        
-        //let tempArray = [self.movies[0].toJSON]
         
         let data = try! JSONSerialization.data(withJSONObject: movieJSONArray, options: .init(rawValue: 0))
         
@@ -195,7 +169,7 @@ class ViewController: UIViewController {
             }
             
         }
-
+        
     }
     
     override func viewDidLoad() {
@@ -203,17 +177,15 @@ class ViewController: UIViewController {
         
         if let data = UserDefaults.standard.value(forKey: movieUserDefaultsKey) as? Data {
             
-            //if let data = userDefaultsString.data(using: .utf8) {
+            if let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
+                var sfMovieArray = [SFMovie]()
                 
-                if let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
-                    var sfMovieArray = [SFMovie]()
-                    
-                    for movieDict in dataDictionaryArray {
-                        sfMovieArray.append(SFMovie(dictionary: movieDict))
-                    }
-                    self.movies = sfMovieArray
-                    displayDataOnMap()
-              //  }
+                for movieDict in dataDictionaryArray {
+                    sfMovieArray.append(SFMovie(dictionary: movieDict))
+                }
+                self.movies = sfMovieArray
+                displayDataOnMap()
+                //  }
             }
         } else {
             
@@ -234,7 +206,6 @@ class ViewController: UIViewController {
                 
                 self.fetchNextGeoCoding()
             }
-            
         }
         
         // Do any additional setup after loading the view, typically from a nib.
