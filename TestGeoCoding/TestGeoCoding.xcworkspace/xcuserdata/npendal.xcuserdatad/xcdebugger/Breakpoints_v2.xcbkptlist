@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930996.036888"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "fetchMoviesFromAPI(url:callBack:)"
-            landmarkType = "7">
+            startingLineNumber = "319"
+            endingLineNumber = "319">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +24,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930996.036888"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "fetchMoviesFromAPI(url:callBack:)"
-            landmarkType = "7">
+            startingLineNumber = "323"
+            endingLineNumber = "323">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestGeoCoding/ViewController.swift"
+            timestampString = "515021234.772646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,75 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930319.454054"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "fetchCordinatesFromLocation(location:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930319.454054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "fetchCordinatesFromLocation(location:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930319.454054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "fetchCordinatesFromLocation(location:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930319.454054"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "fetchCordinatesFromLocation(location:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930996.036888"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -118,77 +66,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930319.454054"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "toJSON"
-            landmarkType = "24">
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.SFMovie.toJSON.getter : Swift.String"
+                  symbolName = "TestGeoCoding.ViewController.viewDidLoad () -&gt; ()"
                   moduleName = "TestGeoCoding"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "514928909.197267"
+                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCode/TestGeoCoding/TestGeoCoding/ViewController.swift"
+                  timestampString = "515021558.840741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "1116">
+                  startingLineNumber = "270"
+                  endingLineNumber = "270"
+                  offsetFromSymbolStart = "2493">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.SFMovie.(toJSON.getter : Swift.String).(implicit closure #1)"
+                  symbolName = "TestGeoCoding.ViewController.(viewDidLoad () -&gt; ()).(closure #1)"
                   moduleName = "TestGeoCoding"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "514928909.198719"
+                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCode/TestGeoCoding/TestGeoCoding/ViewController.swift"
+                  timestampString = "515021558.842115"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.SFMovie.(toJSON.getter : Swift.String).(implicit closure #2)"
-                  moduleName = "TestGeoCoding"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "514928909.20013"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.SFMovie.(toJSON.getter : Swift.String).(implicit closure #3)"
-                  moduleName = "TestGeoCoding"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "514928909.201682"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "270"
+                  endingLineNumber = "270"
+                  offsetFromSymbolStart = "960">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -200,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514930996.036888"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,28 +134,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514931039.169591"
+            timestampString = "515021556.715402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "displayDataOnMap()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "514931075.558066"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

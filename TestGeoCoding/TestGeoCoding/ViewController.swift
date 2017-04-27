@@ -15,12 +15,19 @@ protocol GeoCodingDelegate {
     func geoCodingCompleted(movie: SFMovie)
 }
 
+struct GeoCodingModel {
+    var lat: Double?
+    var long: Double?
+    var placeId: String?
+}
+
 class SFMovie {
     var locations : String?
     var title: String?
     var distributor: String?
     var lat: Double?
     var long: Double?
+    var placeId: String?
     
     var delegate: GeoCodingDelegate?
     let nilConstant = "nil"
@@ -45,7 +52,8 @@ class SFMovie {
         
     }
     
-    func fetchCordinatesFromLocation(location: String, callback:  @escaping (_ lat: Double?, _ long: Double?)->()) {
+    func fetchCordinatesFromLocation(location: String, callback:  @escaping (GeoCodingModel?, Error?)->()) {
+        
         let urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=\(location)&key=AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI"
         let escapedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
@@ -54,9 +62,9 @@ class SFMovie {
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
+            if error != nil {
                 //callBack(nil, error)
-                callback(nil, nil)
+                callback(nil, error!)
                 return
             } else if let data = data,
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? DictionaryAnyObject {
@@ -64,11 +72,15 @@ class SFMovie {
                 if let results = dataDictionary["results"] as? [DictionaryAnyObject] {
                     if let result = results.first {
                         
+                        let placeId = result["place_id"] as? String
+                        
                         if let geometry = result["geometry"] as? DictionaryAnyObject {
                             if let locations = geometry["location"] as? DictionaryAnyObject {
                                 let lat = locations["lat"] as?  Double
                                 let long = locations["lng"] as?  Double
-                                callback(lat, long)
+                                //callback(lat, long)
+                                let geoCodingModel = GeoCodingModel(lat: lat, long: long, placeId: placeId)
+                                callback(geoCodingModel, nil)
                                 return
                             }
                         }
@@ -92,28 +104,108 @@ class ViewController: UIViewController {
     var currentIndex = 0
     var movies:[SFMovie] = [SFMovie]()
     
+    let isForceReset: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if  isForceReset{
+            UserDefaults.standard.setValue(nil, forKey: movieUserDefaultsKey)
+        }
+        
+        if let data = UserDefaults.standard.value(forKey: movieUserDefaultsKey) as? Data {
+            
+            if let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
+                var sfMovieArray = [SFMovie]()
+                
+                for movieDict in dataDictionaryArray {
+                    sfMovieArray.append(SFMovie(dictionary: movieDict))
+                }
+                self.movies = sfMovieArray
+                displayDataOnMap()
+                //  }
+            }
+        } else {
+            
+            fetchMoviesFromAPI(url: URL(string: "https://data.sfgov.org/resource/wwmu-gmzc.json")!) { (resposne: [SFMovie]?, error: Error?) in
+                print("Result returned")
+                
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                guard let resposne = resposne else {
+                    print("resopnse is nil")
+                    return
+                }
+                
+                self.movies = resposne
+                
+                self.fetchNextGeoCoding()
+            }
+        }
+        
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func fetchMoviesFromAPI(url:URL, callBack: @escaping ([SFMovie]?, Error?) -> ()) {
+        
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                callBack(nil, error)
+                print(error.localizedDescription)
+            } else if let data = data,
+                let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
+                
+                var sfMovieArray = [SFMovie]()
+                
+                for movieDict in dataDictionaryArray {
+                    sfMovieArray.append(SFMovie(dictionary: movieDict))
+                }
+                
+                //print(dataDictionary)
+                callBack(sfMovieArray, nil)
+            } else {
+                // Return
+                print("Un expected error occured")
+                callBack(nil, nil)
+            }
+        }
+        task.resume()
+    }
+    
     func fetchNextGeoCoding(){
         
-        if self.movies.count > currentIndex && currentIndex < 10 {
+        if self.movies.count > currentIndex && currentIndex < 20 {
             let movie = self.movies[self.currentIndex]
             
             if let location = movie.locations {
                 
                 print("Fetch GeoLocation for location \(location)")
                 
-                movie.fetchCordinatesFromLocation(location: location, callback: { (lat: Double?, long:Double?) in
+                movie.fetchCordinatesFromLocation(location: location, callback: { (geoCodingModel:GeoCodingModel?, error:Error?) in
                     
-                    movie.lat = lat
-                    movie.long = long
-                    
-                    print(lat)
-                    print(long)
+                    if error == nil, geoCodingModel != nil {
+                        movie.lat = geoCodingModel!.lat
+                        movie.long = geoCodingModel!.long
+                        movie.placeId = geoCodingModel!.placeId
+                        
+                        print(geoCodingModel!)
+                        
+                    }
                     
                     self.currentIndex += 1
-                    
                     self.fetchNextGeoCoding()
-                    
                 })
+                
             } else {
                 self.currentIndex += 1
                 self.fetchNextGeoCoding()
@@ -123,8 +215,6 @@ class ViewController: UIViewController {
             
             self.geoCodingCompleted()
         }
-        
-        
     }
     
     func geoCodingCompleted() {
@@ -165,88 +255,8 @@ class ViewController: UIViewController {
                 marker.title = movie.title
                 //marker.snippet = movie.
                 marker.map = mapView
-                
-            }
-            
-        }
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if let data = UserDefaults.standard.value(forKey: movieUserDefaultsKey) as? Data {
-            
-            if let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
-                var sfMovieArray = [SFMovie]()
-                
-                for movieDict in dataDictionaryArray {
-                    sfMovieArray.append(SFMovie(dictionary: movieDict))
-                }
-                self.movies = sfMovieArray
-                displayDataOnMap()
-                //  }
-            }
-        } else {
-            
-            fetchMoviesFromAPI(url: URL(string: "https://data.sfgov.org/resource/wwmu-gmzc.json")!) { (resposne: [SFMovie]?, error: Error?) in
-                print("Result returned")
-                
-                if error != nil {
-                    print(error!.localizedDescription)
-                    return
-                }
-                
-                guard let resposne = resposne else {
-                    print("resopnse is nil")
-                    return
-                }
-                
-                self.movies = resposne
-                
-                self.fetchNextGeoCoding()
             }
         }
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    func fetchMoviesFromAPI(url:URL, callBack: @escaping ([SFMovie]?, Error?) -> ()) {
-        
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
-                callBack(nil, error)
-                print(error.localizedDescription)
-            } else if let data = data,
-                let dataDictionaryArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [DictionaryAnyObject] {
-                
-                var sfMovieArray = [SFMovie]()
-                
-                for movieDict in dataDictionaryArray {
-                    sfMovieArray.append(SFMovie(dictionary: movieDict))
-                }
-                
-                //print(dataDictionary)
-                callBack(sfMovieArray, nil)
-            } else {
-                // Return
-                print("Un expected error occured")
-                callBack(nil, nil)
-            }
-        }
-        task.resume()
-    }
-    
-    
 }
 
