@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
+            timestampString = "515026929.128918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319">
+            startingLineNumber = "342"
+            endingLineNumber = "342">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
+            timestampString = "515026929.128918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323">
+            startingLineNumber = "346"
+            endingLineNumber = "346">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,27 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021234.772646"
+            timestampString = "515026575.588296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "ViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -70,60 +54,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
+            timestampString = "515026575.588296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.ViewController.viewDidLoad () -&gt; ()"
-                  moduleName = "TestGeoCoding"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCode/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "515021558.840741"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "2493">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TestGeoCoding.ViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "TestGeoCoding"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Niraj_Data/RnD/CodePath/TestGeoCode/TestGeoCoding/TestGeoCoding/ViewController.swift"
-                  timestampString = "515021558.842115"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "270"
-                  endingLineNumber = "270"
-                  offsetFromSymbolStart = "960">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "displayDataOnMap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -134,13 +70,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGeoCoding/ViewController.swift"
-            timestampString = "515021556.715402"
+            timestampString = "515026929.128918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
-            landmarkName = "didReceiveMemoryWarning()"
-            landmarkType = "7">
+            startingLineNumber = "300"
+            endingLineNumber = "300">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

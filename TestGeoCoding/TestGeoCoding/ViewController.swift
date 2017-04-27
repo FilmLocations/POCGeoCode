@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 
 typealias DictionaryAnyObject = [String: AnyObject]
 
@@ -40,6 +41,7 @@ class SFMovie {
         self.title = dictionary["title"] as? String
         self.lat = dictionary["lat"] as? Double
         self.long = dictionary["long"] as? Double
+        self.placeId = dictionary["place_id"] as? String
     }
     
     var toJSON: [String: Any] {
@@ -48,7 +50,8 @@ class SFMovie {
                 "tilte": self.title ?? nilConstant,
                 "lat": self.lat ?? 0,
                 "long": self.long ?? 0,
-                "distributor": self.distributor ?? nilConstant]
+                "distributor": self.distributor ?? nilConstant,
+                "place_id": self.placeId ?? nilConstant]
         
     }
     
@@ -104,10 +107,15 @@ class ViewController: UIViewController {
     var currentIndex = 0
     var movies:[SFMovie] = [SFMovie]()
     
+    var imageView:UIImageView!
+    
     let isForceReset: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        
         
         if  isForceReset{
             UserDefaults.standard.setValue(nil, forKey: movieUserDefaultsKey)
@@ -184,7 +192,7 @@ class ViewController: UIViewController {
     
     func fetchNextGeoCoding(){
         
-        if self.movies.count > currentIndex && currentIndex < 20 {
+        if self.movies.count > currentIndex && currentIndex < 5 {
             let movie = self.movies[self.currentIndex]
             
             if let location = movie.locations {
@@ -233,7 +241,7 @@ class ViewController: UIViewController {
     func displayDataOnMap() {
         
         let filteredMovies = self.movies.filter { (movie: SFMovie) -> Bool in
-            if movie.lat != nil, movie.long != nil{
+            if movie.lat != nil, movie.long != nil, movie.placeId != nil{
                 return true
             }
             return false
@@ -257,6 +265,35 @@ class ViewController: UIViewController {
                 marker.map = mapView
             }
         }
+        loadFirstPhotoForPlace(placeID: filteredMovies.first!.placeId!)
     }
+    
+    func loadFirstPhotoForPlace(placeID: String) {
+        GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                if let firstPhoto = photos?.results.first {
+                    self.loadImageForMetadata(photoMetadata: firstPhoto)
+                }
+            }
+        }
+    }
+    
+    func loadImageForMetadata(photoMetadata: GMSPlacePhotoMetadata) {
+        GMSPlacesClient.shared().loadPlacePhoto(photoMetadata, callback: {
+            (photo, error) -> Void in
+            if let error = error {
+                // TODO: handle the error.
+                print("Error: \(error.localizedDescription)")
+            } else {
+                self.imageView.image = photo;
+                //self.attributionTextView.attributedText = photoMetadata.attributions;
+                self.view.addSubview(self.imageView)
+            }
+        })
+    }
+    
 }
 
