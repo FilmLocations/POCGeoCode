@@ -106,6 +106,11 @@ class ViewController: UIViewController {
     var movieUserDefaultsKey = "MoviesKey"
     var currentIndex = 0
     var movies:[SFMovie] = [SFMovie]()
+    var sortedMovies:[SFMovie]!
+    
+    @IBOutlet weak var listbutton: UIButton!
+    
+    var currentLocation: CLLocation = CLLocation(latitude: 37.7881968, longitude: -122.3960219)
     
     var imageView:UIImageView!
     
@@ -157,6 +162,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func didTapListButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "ShowListSegue", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if let destinationVC = segue.destination as? ListViewController {
+            destinationVC.sortedMovieList = self.sortedMovies
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -192,7 +211,7 @@ class ViewController: UIViewController {
     
     func fetchNextGeoCoding(){
         
-        if self.movies.count > currentIndex && currentIndex < 5 {
+        if self.movies.count > currentIndex && currentIndex < 20 {
             let movie = self.movies[self.currentIndex]
             
             if let location = movie.locations {
@@ -247,14 +266,26 @@ class ViewController: UIViewController {
             return false
         }
         
-        let firstLat = filteredMovies.first?.lat
-        let firstLong = filteredMovies.first?.long
+        self.sortedMovies = filteredMovies.sorted { (movie1:SFMovie, movie2:SFMovie) -> Bool in
+            
+            let location1 = CLLocation(latitude: movie1.lat!, longitude: movie1.long!)
+            let location2 = CLLocation(latitude: movie2.lat!, longitude: movie2.long!)
+            
+            let differnce1 = currentLocation.distance(from: location1)
+            let differnce2 = currentLocation.distance(from: location2)
+         
+            return differnce1 < differnce2
+        }
+        
+        let firstLat = self.sortedMovies.first?.lat
+        let firstLong = self.sortedMovies.first?.long
         
         let camera = GMSCameraPosition.camera(withLatitude: firstLat!, longitude: firstLong!, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        self.view = mapView
+        mapView.frame = self.view.frame
+        self.view.addSubview(mapView)
         
-        for movie in self.movies {
+        for movie in sortedMovies {
             
             if movie.lat != nil, movie.long != nil {
                 // Creates a marker in the center of the map.
@@ -263,9 +294,16 @@ class ViewController: UIViewController {
                 marker.title = movie.title
                 //marker.snippet = movie.
                 marker.map = mapView
+                
+                loadFirstPhotoForPlace(placeID: self.sortedMovies.first!.placeId!)
             }
         }
-        loadFirstPhotoForPlace(placeID: filteredMovies.first!.placeId!)
+        
+        
+        
+        self.view.bringSubview(toFront: self.imageView)
+        self.view.bringSubview(toFront: self.listbutton)
+        
     }
     
     func loadFirstPhotoForPlace(placeID: String) {

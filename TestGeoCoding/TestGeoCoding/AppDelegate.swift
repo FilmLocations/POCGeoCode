@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let memoryCapacity = 0
+        let diskCapacity = 500 * 1024 * 1024
+        let cache = URLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "myDataPath")
+        URLCache.shared = cache
+        
         GMSServices.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
         GMSPlacesClient.provideAPIKey("AIzaSyDkh00P83RkVTjmA98hUI2iACj368aTeGI")
         return true

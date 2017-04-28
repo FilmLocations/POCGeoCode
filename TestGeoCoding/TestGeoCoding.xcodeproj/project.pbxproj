@@ -12,6 +12,7 @@
 		88A73FCF1EB0465100EFF5E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A73FCD1EB0465100EFF5E6 /* Main.storyboard */; };
 		88A73FD11EB0465100EFF5E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88A73FD01EB0465100EFF5E6 /* Assets.xcassets */; };
 		88A73FD41EB0465100EFF5E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88A73FD21EB0465100EFF5E6 /* LaunchScreen.storyboard */; };
+		88E96F751EB2F3EC00EE3423 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E96F741EB2F3EC00EE3423 /* ListViewController.swift */; };
 		C7DC9A5AF255E6A5C120AAEF /* Pods_TestGeoCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0950AE4EAC365F330B94019 /* Pods_TestGeoCoding.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		88A73FD01EB0465100EFF5E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88A73FD31EB0465100EFF5E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88A73FD51EB0465100EFF5E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88E96F741EB2F3EC00EE3423 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		91968F53D97B28DB22861D17 /* Pods-TestGeoCoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestGeoCoding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestGeoCoding/Pods-TestGeoCoding.debug.xcconfig"; sourceTree = "<group>"; };
 		CD73A1BF333F89681C82A055 /* Pods-TestGeoCoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestGeoCoding.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestGeoCoding/Pods-TestGeoCoding.release.xcconfig"; sourceTree = "<group>"; };
 		F0950AE4EAC365F330B94019 /* Pods_TestGeoCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestGeoCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				88A73FD01EB0465100EFF5E6 /* Assets.xcassets */,
 				88A73FD21EB0465100EFF5E6 /* LaunchScreen.storyboard */,
 				88A73FD51EB0465100EFF5E6 /* Info.plist */,
+				88E96F741EB2F3EC00EE3423 /* ListViewController.swift */,
 			);
 			path = TestGeoCoding;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				88A73FCC1EB0465100EFF5E6 /* ViewController.swift in Sources */,
 				88A73FCA1EB0465100EFF5E6 /* AppDelegate.swift in Sources */,
+				88E96F751EB2F3EC00EE3423 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +382,7 @@
 				88A73FDA1EB0465100EFF5E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
